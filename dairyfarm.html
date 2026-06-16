@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Green Valley Dairy Farm</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #26332d;
+      background: #f7f4ec;
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid #d8d2c4;
+    }
+
+    nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: #24523d;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 22px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #26332d;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover {
+      color: #2f7d54;
+    }
+
+    .hero {
+      min-height: 82vh;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(90deg, rgba(18, 42, 31, 0.78), rgba(18, 42, 31, 0.2)),
+        url("https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?auto=format&fit=crop&w=1800&q=80");
+      background-size: cover;
+      background-position: center;
+      color: white;
+    }
+
+    .hero-content {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      padding: 70px 20px;
+    }
+
+    .hero h1 {
+      max-width: 720px;
+      font-size: clamp(42px, 7vw, 82px);
+      line-height: 1.02;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 560px;
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 800;
+      border: 2px solid white;
+    }
+
+    .button.primary {
+      background: #f5c84b;
+      color: #26332d;
+      border-color: #f5c84b;
+    }
+
+    .button.secondary {
+      color: white;
+    }
+
+    section {
+      padding: 74px 20px;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 34px;
+      color: #24523d;
+      margin-bottom: 12px;
+    }
+
+    .section-intro {
+      max-width: 680px;
+      margin-bottom: 34px;
+      color: #536058;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .about-grid img {
+      width: 100%;
+      height: 390px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .fact {
+      background: white;
+      border: 1px solid #ded8cb;
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    .fact strong {
+      display: block;
+      font-size: 24px;
+      color: #2f7d54;
+    }
+
+    .products {
+      background: #ffffff;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .product-card {
+      border: 1px solid #ded8cb;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fffdf8;
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .product-card div {
+      padding: 18px;
+    }
+
+    .product-card h3 {
+      margin-bottom: 8px;
+      color: #24523d;
+    }
+
+    .visit {
+      background: #e8f0df;
+    }
+
+    .visit-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .visit-box {
+      background: white;
+      border: 1px solid #d2dbc8;
+      border-radius: 8px;
+      padding: 24px;
+    }
+
+    .visit-box h3 {
+      color: #24523d;
+      margin-bottom: 10px;
+    }
+
+    .hours {
+      list-style: none;
+      margin-top: 12px;
+    }
+
+    .hours li {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #e5e0d5;
+      gap: 18px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+      background: white;
+      border: 1px solid #ded8cb;
+      border-radius: 8px;
+      padding: 22px;
+    }
+
+    label {
+      font-weight: 800;
+      color: #24523d;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #c8c1b2;
+      border-radius: 6px;
+      font: inherit;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    button {
+      justify-self: start;
+      padding: 12px 20px;
+      border: 0;
+      border-radius: 6px;
+      background: #2f7d54;
+      color: white;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #24523d;
+    }
+
+    .message {
+      display: none;
+      color: #24523d;
+      font-weight: 800;
+    }
+
+    footer {
+      background: #1d3328;
+      color: white;
+      text-align: center;
+      padding: 24px 20px;
+    }
+
+    @media (max-width: 780px) {
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 12px 18px;
+      }
+
+      .about-grid,
+      .visit-grid,
+      .contact-grid,
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .facts {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 76vh;
+      }
+
+      section {
+        padding: 54px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">Green Valley Dairy</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#visit">Visit</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Fresh dairy from a family farm</h1>
+        <p>
+          We produce wholesome milk, butter, yogurt, and cheese from healthy cows
+          raised on green pasture.
+        </p>
+        <div class="button-row">
+          <a class="button primary" href="#products">View Products</a>
+          <a class="button secondary" href="#visit">Plan a Visit</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about-grid">
+        <div>
+          <h2 class="section-title">About Our Farm</h2>
+          <p>
+            Green Valley Dairy is a small dairy farm focused on clean milk,
+            animal care, and honest farming. Our cows graze daily, our milk is
+            handled with care, and our products are made fresh for local
+            families, stores, and cafes.
+          </p>
+          <div class="facts">
+            <div class="fact">
+              <strong>120+</strong>
+              Happy cows
+            </div>
+            <div class="fact">
+              <strong>25</strong>
+              Years farming
+            </div>
+            <div class="fact">
+              <strong>Daily</strong>
+              Fresh milk
+            </div>
+          </div>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=1000&q=80"
+          alt="Dairy cows grazing in a field"
+        />
+      </div>
+    </section>
+
+    <section class="products" id="products">
+      <div class="container">
+        <h2 class="section-title">Our Dairy Products</h2>
+        <p class="section-intro">
+          From breakfast tables to bakery kitchens, our products are prepared
+          with freshness, quality, and natural flavor in mind.
+        </p>
+
+        <div class="product-grid">
+          <article class="product-card">
+            <img
+              src="https://images.unsplash.com/photo-1563636619-e9143da7973b?auto=format&fit=crop&w=900&q=80"
+              alt="Bottle of fresh milk"
+            />
+            <div>
+              <h3>Fresh Milk</h3>
+              <p>Whole milk collected daily, chilled quickly, and packed fresh.</p>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <img
+              src="https://images.unsplash.com/photo-1452195100486-9cc805987862?auto=format&fit=crop&w=900&q=80"
+              alt="Fresh cheese on a board"
+            />
+            <div>
+              <h3>Farm Cheese</h3>
+              <p>Soft and aged cheeses made in small batches for rich flavor.</p>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <img
+              src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=80"
+              alt="Yogurt with fruit"
+            />
+            <div>
+              <h3>Natural Yogurt</h3>
+              <p>Creamy yogurt made with simple ingredients and no extra fuss.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="visit" id="visit">
+      <div class="container">
+        <h2 class="section-title">Visit the Farm</h2>
+        <p class="section-intro">
+          Families, schools, and local food lovers are welcome to visit, meet
+          the cows, and see how fresh dairy is produced.
+        </p>
+
+        <div class="visit-grid">
+          <div class="visit-box">
+            <h3>Farm Activities</h3>
+            <p>Guided farm walks, calf feeding demonstrations, milking room tours, and a small farm shop with fresh products.</p>
+          </div>
+
+          <div class="visit-box">
+            <h3>Opening Hours</h3>
+            <ul class="hours">
+              <li><span>Monday - Friday</span><strong>8:00 AM - 5:00 PM</strong></li>
+              <li><span>Saturday</span><strong>9:00 AM - 4:00 PM</strong></li>
+              <li><span>Sunday</span><strong>Closed</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container contact-grid">
+        <div>
+          <h2 class="section-title">Contact Us</h2>
+          <p>
+            Want to order dairy products, book a farm tour, or ask about local
+            delivery? Send us a message.
+          </p>
+          <p><strong>Address:</strong> 42 Meadow Road, Green Valley</p>
+          <p><strong>Phone:</strong> +1 555 014 2280</p>
+          <p><strong>Email:</strong> hello@greenvalleydairy.com</p>
+        </div>
+
+        <form id="contactForm">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Your name" required />
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="Your email" required />
+          </div>
+
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="How can we help?" required></textarea>
+          </div>
+
+          <button type="submit">Send Message</button>
+          <p class="message" id="formMessage">Thank you. Your message has been prepared.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Green Valley Dairy Farm. Fresh milk, honest farming.</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById("contactForm");
+    const formMessage = document.getElementById("formMessage");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      formMessage.style.display = "block";
+      form.reset();
+    });
+  </script>
+</body>
+</html>
